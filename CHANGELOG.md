@@ -4,6 +4,10 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Fixed
+
+- `analyze_repo.py`: large monorepos no longer silently drop packages past the 20k-file cap. Workspace members (package.json workspaces, pnpm-workspace.yaml, Cargo.toml [workspace], go.work) are always fully scanned. The JSON now includes `"truncated": true` and `"files_seen"` when the cap is hit, and a `--max-files N` flag is available.
+
 ## [1.1.0] - 2026-10-13
 
 ### Added
