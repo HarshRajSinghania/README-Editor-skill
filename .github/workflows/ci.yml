@@ -26,15 +26,17 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: ${{ matrix.python }}
       - name: Compile scripts
         shell: bash
         run: python -m py_compile readme-forge/scripts/*.py
+      - name: Doc counts match code
+        run: python readme-forge/scripts/check_doc_counts.py
       - name: Analyzer runs on the sample app
         run: python readme-forge/scripts/analyze_repo.py demo/sample-app --compact
       - name: Import graph runs on the sample app
@@ -45,7 +47,7 @@ jobs:
         run: python readme-forge/scripts/score_readme.py readme-forge/README.md --min 85
       - name: Hugging Face card templates score
         shell: bash
-        run: for f in readme-forge/templates/huggingface/*.md; do python readme-forge/scripts/score_readme.py "$f" --hf; done
+        run: for f in readme-forge/templates/huggingface/*.md; do python readme-forge/scripts/score_readme.py "$f" --hf > /dev/null; done
       - name: Profile templates score
         shell: bash
         run: for f in readme-forge/templates/profile/*.md; do python readme-forge/scripts/score_readme.py "$f" --profile > /dev/null; done
@@ -68,7 +70,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
       - name: Build readme-forge.zip
