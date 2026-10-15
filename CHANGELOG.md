@@ -4,6 +4,11 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Added
+
+- `scripts/check_doc_counts.py`: CI check that documented style, palette and profile-template counts stay in sync with the code (#20).
+- `make_banner.py --style pulse`: soft concentric rings breathing behind the title, with dark and light variants (#15, thanks @Sultanast01).
+
 ## [1.1.0] - 2026-10-13
 
 ### Added
@@ -24,21 +29,11 @@ All notable changes to this project are documented here. The format follows [Kee
 - `analyze_repo.py` no longer reports env vars, routes and tests from `demo/`, `examples/`, `samples/`, `fixtures/` and `testdata/` as the project's own. They are listed in `example_dirs` instead.
 - `make_banner.py` printed absolute paths (`C:/Users/...`) in the README snippet when `--out` was absolute. Paths are now relative to the repository root.
 
-### Added
-
-- Terminal install command (`claude plugin install ...`) for environments where `/plugin` isn't available, such as the VS Code extension.
-- Troubleshooting section in the README.
-- CI checks for Hugging Face cards and the plugin manifests.
-
 ## [1.0.0] - 2026-10-12
 
 ### Added
 
 - `readme-forge` skill: project READMEs from real code facts, GitHub profile READMEs (11 archetypes), Hugging Face model/dataset/Space cards, and PyPI/npm/GitLab variants.
-- `analyze_repo.py`: detects languages, package managers, scripts, env vars, Docker, CI, license and Hugging Face artifacts.
-- `import_graph.py`: Mermaid architecture diagrams from Python, JS/TS, Go and Rust imports.
-- `score_readme.py`: 0–100 score, linter, accessibility checks and code-drift detection.
-- `check_links.py`: dead-link and dead-widget checker.
 - `make_banner.py`: 15 animated SVG banner styles with dark/light variants, footers, dividers and CTA buttons.
-- Companion doc templates, profile GitHub Actions, and a Claude Code plugin marketplace.
-- Demo reel and GIF.
+- Scoring, analysis and import-graph scripts, all standard-library only.
+- Demo sample app and GIF.

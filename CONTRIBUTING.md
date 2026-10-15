@@ -7,7 +7,7 @@ Thanks for helping. This guide gets you from clone to merged PR.
 - **Report a bug:** [open an issue](https://github.com/tanmayai23/README-Editor-skill/issues/new?template=bug_report.yml) with the command you ran and what you expected.
 - **Report a broken widget:** profile widget hosts change often. [Open a widget report](https://github.com/tanmayai23/README-Editor-skill/issues/new?template=broken_widget.yml) with the URL that fails.
 - **Suggest a feature:** [open a feature request](https://github.com/tanmayai23/README-Editor-skill/issues/new?template=feature_request.yml) and describe the problem before the solution.
-- **Add a banner style, palette or template:** read the rules below first.
+- **Add a banner style, palette or template:** read the rules below first. After adding one, update the documented counts (or the CI check `check_doc_counts.py` will fail) and mention the new count in the relevant README/SKILL files.
 - **Pick up an issue:** look for [`good first issue`](https://github.com/tanmayai23/README-Editor-skill/issues?q=is%3Aopen+label%3A%22good+first+issue%22) and comment that you're taking it.
 
 ## Development setup
@@ -26,6 +26,7 @@ Run the same checks as CI:
 
 ```bash
 python -m py_compile readme-forge/scripts/*.py
+python readme-forge/scripts/check_doc_counts.py
 python readme-forge/scripts/score_readme.py README.md --repo .
 python readme-forge/scripts/analyze_repo.py demo/sample-app --compact
 ```
